@@ -32,19 +32,19 @@ export default function TransactionHistory({ transactions }) {
 
   function handleFilterChange(e) {
     setSelectedType(e.target.value);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   }
 
   return (
     <div className="bg-white rounded-lg shadow p-4 mt-6">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-wrap items-center justify-between mb-4 gap-3">
         <h2 className="text-sm font-semibold text-gray-700">
           Transaction History
         </h2>
         <select
           value={selectedType}
           onChange={handleFilterChange}
-          className="text-sm border border-gray-300 rounded px-2 py-1 bg-gray-100 outline-0 focus:ring-0 cursor-pointer"
+          className="text-sm border border-gray-300 rounded px-3 py-2 bg-gray-100 outline-0 focus:ring-0 cursor-pointer"
         >
           <option value="All">All Transactions</option>
           <option value="Withdrawal">Withdrawal</option>
@@ -58,51 +58,53 @@ export default function TransactionHistory({ transactions }) {
           No transactions to display.
         </div>
       ) : (
-        <table className="w-full text-sm text-left">
-          <thead className="text-xs text-gray-500 border-b border-[#E5E7EB]">
-            <tr>
-              <th className="px-2 py-3">Transaction ID</th>
-              <th>Type</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((trx, i) => (
-              <tr key={i} className="border-b border-[#E5E7EB]">
-                <td className="p-3">#{trx.id}</td>
-                <td className="py-3">
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      trx.type === "Withdrawal"
-                        ? "bg-blue-100 text-blue-700"
-                        : trx.type === "Earning"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-red-100 text-red-700"
+        <div className="overflow-x-auto">
+          <table className="min-w-[600px] w-full text-sm text-left">
+            <thead className="text-xs text-gray-500 border-b border-[#E5E7EB]">
+              <tr>
+                <th className="px-3 py-3">Transaction ID</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentItems.map((trx, i) => (
+                <tr key={i} className="border-b border-[#E5E7EB]">
+                  <td className="p-3">#{trx.id}</td>
+                  <td className="py-3">
+                    <span
+                      className={`text-xs px-2 py-1 rounded-full ${
+                        trx.type === "Withdrawal"
+                          ? "bg-blue-100 text-blue-700"
+                          : trx.type === "Earning"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-700"
+                      }`}
+                    >
+                      {trx.type}
+                    </span>
+                  </td>
+                  <td className="py-3 text-gray-500">{trx.description}</td>
+                  <td className="py-3 text-gray-500">{trx.date}</td>
+                  <td
+                    className={`py-3 font-semibold ${
+                      trx.amount < 0 ? "text-red-500" : "text-green-600"
                     }`}
                   >
-                    {trx.type}
-                  </span>
-                </td>
-                <td className="py-3 text-gray-500">{trx.description}</td>
-                <td className="py-3 text-gray-500">{trx.date}</td>
-                <td
-                  className={`py-3 font-semibold ${
-                    trx.amount < 0 ? "text-red-500" : "text-green-600"
-                  }`}
-                >
-                  {trx.amount < 0
-                    ? `-$${Math.abs(trx.amount).toFixed(2)}`
-                    : `+$${trx.amount.toFixed(2)}`}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    {trx.amount < 0
+                      ? `-$${Math.abs(trx.amount).toFixed(2)}`
+                      : `+$${trx.amount.toFixed(2)}`}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
-      <div className="text-xs text-gray-500 mt-2 flex justify-between items-center">
+      <div className="text-xs text-gray-500 mt-4 flex flex-wrap items-center justify-between gap-3">
         <span>
           {filteredTransactions.length === 0
             ? "No transactions found"
@@ -115,11 +117,10 @@ export default function TransactionHistory({ transactions }) {
           <button
             onClick={handlePrevious}
             disabled={currentPage === 1}
-            aria-label="Previous Page"
-            className={`px-3 py-1 border border-[#E5E7EB] cursor-pointer rounded-lg ${
+            className={`px-4 py-2 border border-[#E5E7EB] rounded-lg text-sm ${
               currentPage === 1
                 ? "text-gray-300 cursor-not-allowed"
-                : "text-gray-700 hover:bg-gray-50"
+                : "text-gray-700 hover:bg-gray-50 cursor-pointer"
             }`}
           >
             Previous
@@ -127,11 +128,10 @@ export default function TransactionHistory({ transactions }) {
           <button
             onClick={handleNext}
             disabled={currentPage === totalPages || totalPages === 0}
-            aria-label="Next Page"
-            className={`px-3 py-1 border border-[#E5E7EB] cursor-pointer rounded-lg ${
+            className={`px-4 py-2 border border-[#E5E7EB] rounded-lg text-sm ${
               currentPage === totalPages || totalPages === 0
                 ? "text-gray-300 cursor-not-allowed"
-                : "text-gray-700 hover:bg-gray-50"
+                : "text-gray-700 hover:bg-gray-50 cursor-pointer"
             }`}
           >
             Next

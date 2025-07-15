@@ -17,7 +17,7 @@ const cards = [
     icon: <FaClock className="text-yellow-600" />,
     iconBg: 'bg-yellow-100',
     alert: {
-      icon: <FaInfoCircle size={30} className="text-yellow-700" />,
+      icon: <FaInfoCircle size={20} className="text-yellow-700 mt-1" />,
       text: 'Funds are held in escrow until the order is confirmed as delivered and the return period has expired.',
     },
   },
@@ -36,33 +36,35 @@ const cards = [
 
 export default function PayoutPageCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {cards.map((card, index) => (
-        <div key={index} className="bg-white p-6 rounded-lg shadow relative">
+        <div key={index} className="bg-white p-5 rounded-lg shadow-sm relative flex flex-col justify-between h-full">
 
           <div className={`absolute top-4 right-4 p-2 rounded-full ${card.iconBg}`}>
             {card.icon}
           </div>
 
-          <h2 className="text-sm font-medium text-gray-500">{card.title}</h2>
-          <p className="text-2xl font-bold text-gray-800 mt-3 mb-2">{card.amount}</p>
-          <p className="text-sm text-gray-500 mb-4">{card.subtitle}</p>
+          <div className="mb-4">
+            <h2 className="text-sm font-medium text-gray-500">{card.title}</h2>
+            <p className="text-2xl font-bold text-gray-800 mt-3 mb-1">{card.amount}</p>
+            <p className="text-sm text-gray-500">{card.subtitle}</p>
+          </div>
 
           {card.button && (
-            <button className={`${card.buttonClass} text-sm px-4 py-2 rounded min-w-full cursor-pointer`} style={{backgroundColor: 'var(--color-theme)'}} >
+            <button className={`${card.buttonClass} text-sm px-4 py-2 rounded w-full mb-3`} style={{ backgroundColor: 'var(--color-theme)' }}>
               {card.button}
             </button>
           )}
 
           {card.alert && (
-            <div className="bg-yellow-50 border border-yellow-300 text-yellow-800 text-sm p-3 rounded flex items-start gap-2">
+            <div className="bg-yellow-50 border border-yellow-300 text-yellow-800 text-sm p-3 rounded flex items-start gap-2 mb-3">
               {card.alert.icon}
               <span>{card.alert.text}</span>
             </div>
           )}
 
           {card.extra && (
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-sm border-t pt-3 mt-3">
               <div>
                 <p className="text-gray-500">This Month</p>
                 <p className="font-semibold">{card.extra.thisMonth}</p>

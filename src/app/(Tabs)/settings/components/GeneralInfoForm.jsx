@@ -8,8 +8,7 @@ export default function GeneralInfo() {
 
   const [form, setForm] = useState({
     storeName: 'TechGear Shop',
-    description:
-      '',
+    description: '',
     email: 'mike@techgearshop.com',
     phone: '+1 (555) 123-4567',
     address: '',
@@ -29,14 +28,13 @@ export default function GeneralInfo() {
   }
 
   return (
-    <div className="mx-auto bg-white p-6 rounded-lg shadow space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4 border-b-1 border-gray-300">
-
+    <div className="max-w-screen mx-auto bg-white p-4 md:p-6 rounded-lg shadow space-y-6">
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4 border-b border-gray-200">
         {/* Store Identity */}
         <div>
           <h2 className="text-lg font-semibold mb-4">Store Identity</h2>
 
-          {/* Logo Upload */}
           <div className="flex flex-col items-start gap-2 mb-4">
             <label className="block text-sm font-medium">Store Logo</label>
             <div className="flex gap-3 items-center">
@@ -48,7 +46,7 @@ export default function GeneralInfo() {
                 )}
               </div>
               <div>
-                <label className={`inline-block text-white text-sm px-3 py-1.5 rounded cursor-pointer ${'bg-[var(--color-theme)]'}`}>
+                <label className="inline-block text-white text-sm px-3 py-1.5 rounded cursor-pointer bg-[var(--color-theme)]">
                   Upload Logo
                   <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                 </label>
@@ -57,7 +55,6 @@ export default function GeneralInfo() {
             </div>
           </div>
 
-          {/* Store Name */}
           <div className="mb-4">
             <label className="block text-sm font-medium">Store Name</label>
             <input
@@ -66,11 +63,10 @@ export default function GeneralInfo() {
               value={form.storeName}
               onChange={handleChange}
               placeholder="Store Name"
-              className="w-full border-1 border-gray-300 rounded px-3 py-2 mt-1 outline-0 focus:ring-0 placeholder:text-gray-400"
+              className="w-full border border-gray-300 rounded px-3 py-2 mt-1 outline-none focus:ring-0 placeholder:text-gray-400"
             />
           </div>
 
-          {/* Description */}
           <div>
             <label className="block text-sm font-medium">Store Description</label>
             <textarea
@@ -78,8 +74,8 @@ export default function GeneralInfo() {
               value={form.description}
               onChange={handleChange}
               rows={4}
-              placeholder='Premium tech accessories and gadgets'
-              className="w-full rounded px-3 py-2 mt-1 text-sm resize-none border-1 border-gray-300 placeholder:text-gray-400 outline-0 focus:ring-0"
+              placeholder="Premium tech accessories and gadgets"
+              className="w-full rounded px-3 py-2 mt-1 text-sm resize-none border border-gray-300 placeholder:text-gray-400 outline-none focus:ring-0"
             />
           </div>
         </div>
@@ -88,7 +84,6 @@ export default function GeneralInfo() {
         <div>
           <h2 className="text-lg font-semibold mb-4">Contact Information</h2>
 
-          {/* Email */}
           <div className="mb-4">
             <label className="block text-sm font-medium">Store Email</label>
             <input
@@ -97,12 +92,11 @@ export default function GeneralInfo() {
               value={form.email}
               onChange={handleChange}
               disabled
-              className="w-full rounded px-3 py-2 mt-1 bg-gray-100 text-gray-500 cursor-not-allowed outline-0 focus:ring-0 border-1 border-gray-300"
+              className="w-full rounded px-3 py-2 mt-1 bg-gray-100 text-gray-500 cursor-not-allowed outline-none focus:ring-0 border border-gray-300"
             />
             <p className="text-xs text-gray-500 mt-1">Contact support to change email</p>
           </div>
 
-          {/* Phone */}
           <div className="mb-4">
             <label className="block text-sm font-medium">Store Phone</label>
             <input
@@ -111,11 +105,10 @@ export default function GeneralInfo() {
               value={form.phone}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="w-full rounded px-3 py-2 mt-1 border-1 border-gray-300 placeholder:text-gray-400 outline-0 focus:ring-0"
+              className="w-full rounded px-3 py-2 mt-1 border border-gray-300 placeholder:text-gray-400 outline-none focus:ring-0"
             />
           </div>
 
-          {/* Address */}
           <div>
             <label className="block text-sm font-medium">Store Address</label>
             <textarea
@@ -124,15 +117,14 @@ export default function GeneralInfo() {
               onChange={handleChange}
               rows={3}
               placeholder="123 Tech Street, Silicon Valley, CA 94105, United States"
-              className="w-full rounded px-3 py-2 mt-1 text-sm resize-none border-1 border-gray-300 placeholder:text-gray-400 outline-0 focus:ring-0"
+              className="w-full rounded px-3 py-2 mt-1 text-sm resize-none border border-gray-300 placeholder:text-gray-400 outline-none focus:ring-0"
             />
           </div>
         </div>
       </div>
 
-      {/* Update Button */}
       <div className="text-right">
-        <button className={`px-6 py-2 text-white rounded  text-sm cursor-pointer ${'bg-[var(--color-theme)]'}`}>
+        <button className="px-6 py-2 text-white rounded text-sm cursor-pointer bg-[var(--color-theme)]">
           Update Store Info
         </button>
       </div>

@@ -4,12 +4,10 @@ import ProductPageCards from "./components/ProductsPageCards";
 
 export default function Products() {
   return (
-    <div className="grid gap-4 p-5">
-        <ProductsFilterBar />
-        <ProductPageCards />
-        <FeaturedProductsSection />
+    <div className="p-4 space-y-6">
+      <ProductsFilterBar />
+      <ProductPageCards />
+      <FeaturedProductsSection />
     </div>
-  )
+  );
 }
-
-

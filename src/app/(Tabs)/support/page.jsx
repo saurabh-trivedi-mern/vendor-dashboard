@@ -22,17 +22,22 @@ export default function SupportPage() {
   };
 
   return (
-    <div className="flex gap-4 p-4">
-      <SupportSidebarSection
-        tickets={tickets}
-        activeIndex={activeIndex}
-        setActiveIndex={setActiveIndex}
-      />
-      <SupportChatWindow
-        ticket={tickets[activeIndex]}
-        onSendMessage={handleSendMessage}
-        onMarkResolved={handleMarkResolved}
-      />
+    <div className="flex flex-col lg:flex-row gap-4 p-4 max-w-7xl mx-auto w-full">
+      <div className="w-full lg:w-1/3">
+        <SupportSidebarSection
+          tickets={tickets}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+        />
+      </div>
+
+      <div className="w-full lg:w-2/3">
+        <SupportChatWindow
+          ticket={tickets[activeIndex]}
+          onSendMessage={handleSendMessage}
+          onMarkResolved={handleMarkResolved}
+        />
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import { FaChartLine, FaCartShopping, FaMoneyBillWave } from "react-icons/fa6";
 import { FaBox, FaChartPie } from "react-icons/fa";
 import { BiSupport } from "react-icons/bi"
 import { IoMdSettings } from "react-icons/io";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiX } from "react-icons/fi";
 import Image from 'next/image';
 
 const menu = [
@@ -20,15 +20,35 @@ const menu = [
   { name: 'Settings', icon: <IoMdSettings />, href: '/settings' },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ onClose, isOpen }) {
   const pathname = usePathname()
 
   return (
-    <aside className="h-screen w-64 bg-white border-r-2 border-r-[#E5E7EB] shadow-lg flex flex-col justify-between fixed top-0 left-0 z-50">
+    <aside
+      className={`
+        fixed top-0 left-0 z-50 h-full w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col justify-between
+        transform transition-transform duration-300 ease-in-out
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        lg:translate-x-0 lg:static lg:block
+      `}
+    >
       <div>
-        <div className="flex items-center gap-2 p-4 text-xl font-semibold border-b border-[#E5E7EB]">
-          <span className="text-[var(--color-theme)] text-3xl"><CiShop/></span> Vendor Panel
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 lg:hidden">
+          <div className="flex items-center gap-2 text-xl font-semibold">
+            <span className="text-[var(--color-theme)] text-3xl"><CiShop /></span> <Link href="/"> Vendor Panel</Link>
+          </div>
+          <button onClick={onClose} className="text-gray-500 text-2xl hover:text-black">
+            <FiX />
+          </button>
         </div>
+
+        {/* Desktop Header */}
+        <div className="hidden lg:flex items-center gap-2 p-4 text-xl font-semibold border-b border-gray-200">
+          <span className="text-[var(--color-theme)] text-3xl"><CiShop /></span> <Link href="/"> Vendor Panel</Link>
+        </div>
+
+        {/* Menu */}
         <nav className="mt-4 flex flex-col gap-1">
           {menu.map((item) => {
             const isActive = pathname.startsWith(item.href)
@@ -36,6 +56,7 @@ export default function Sidebar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={() => { if (onClose) onClose() }}
                 className={`flex items-center gap-3 py-4 px-6 text-xl transition-all duration-200 
                   ${isActive ? 'bg-[var(--color-theme-light)] text-black border-l-[4px] border-[var(--color-theme)]' : 'text-gray-500'}
                   hover:bg-[var(--color-theme-light)] hover:text-black hover:border-l-[4px] hover:border-[var(--color-theme)]`}
@@ -48,15 +69,15 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div className="p-4 border-t-1 border-gray-200 flex justify-between items-center">
-        <div className="flex gap-5  items-center">
-          <Image src="/avatar.png" alt="avatar" className="rounded-full object-cover" width={20} height={20} />
+      <div className="p-4 border-t border-gray-200 flex justify-between items-center">
+        <div className="flex gap-3 items-center">
+          <Image src="/avatar.png" alt="avatar" className="rounded-full object-cover" width={24} height={24} />
           <div className="text-sm">
             <div className="font-medium">TechGear Shop</div>
             <div className="text-gray-500 text-xs">Verified Vendor</div>
           </div>
         </div>
-        <div className="cursor-pointer text-xl">
+        <div className="cursor-pointer text-xl text-gray-500 hover:text-black">
           <FiLogOut />
         </div>
       </div>

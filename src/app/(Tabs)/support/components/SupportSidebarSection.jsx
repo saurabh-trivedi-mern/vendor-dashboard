@@ -19,16 +19,16 @@ export default function SupportSidebarSection({ tickets, activeIndex, setActiveI
   });
 
   return (
-    <div className="w-[350px] bg-white p-4 overflow-y-auto shadow rounded-md max-h-[85vh] hide-scrollbar">
+    <div className="w-full lg:w-[350px] bg-white p-4 overflow-y-auto shadow rounded-md max-h-[50vh] md:max-h-[80vh] hide-scrollbar">
 
       <input
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        className="w-full px-7 py-2 mb-4 text-sm rounded-md bg-gray-100 outline-none focus:ring-0 placeholder:text-gray-400"
+        className="w-full px-4 py-2 mb-4 text-sm rounded-md bg-gray-100 outline-none focus:ring-0 placeholder:text-gray-400"
         placeholder="Search by subject or ticket ID..."
       />
 
-      <div className="flex gap-3 items-center text-sm mb-3">
+      <div className="flex gap-3 items-center text-sm mb-3 flex-wrap">
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
@@ -58,9 +58,7 @@ export default function SupportSidebarSection({ tickets, activeIndex, setActiveI
               onClick={() => setActiveIndex(originalIndex)}
             >
               <div className="flex justify-between items-center">
-                <p className="text-md font-medium text-black">
-                  {ticket.subject}
-                </p>
+                <p className="text-md font-medium text-black">{ticket.subject}</p>
                 <p
                   className={`ml-2 text-xs font-semibold py-1 px-2 rounded-xl ${
                     ticket.status === "Open"

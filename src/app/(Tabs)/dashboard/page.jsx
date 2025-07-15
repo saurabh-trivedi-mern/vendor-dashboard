@@ -11,15 +11,19 @@ export default function DashboardPage() {
       <DashboardFilterBar />
       <DashboardPageCards />
 
-      <div className="bg-white h-60 rounded-xl shadow-sm p-4">Sales Trend</div> 
-      {/* Sales Trend Chart Wll Be Here */}
+      {/* Sales Trend Placeholder */}
+      <div className="bg-white min-h-[200px] md:min-h-[240px] rounded-xl shadow-sm p-4 flex items-center justify-center text-gray-400">
+        Sales Trend Chart (Coming Soon)
+      </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      {/* Best Selling & Recent Orders */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <BestSellingProducts />
         <RecentOrders />
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      {/* Customer Locations & Inventory */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <CustomerLocations />
         <InventoryStatus />
       </div>

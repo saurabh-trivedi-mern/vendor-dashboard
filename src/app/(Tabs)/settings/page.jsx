@@ -26,7 +26,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 w-[95vw] md:w-[80vw] space-y-6 overflow-hidden">
       <SettingsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {renderTabContent()}
     </div>

@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import OrdersTable from "./components/OrdersTable";
 import OrderDetailsPanel from "./components/OrderDetailsPanel";
@@ -18,21 +19,27 @@ export default function OrdersPage() {
         );
 
   return (
-    <div className="grid gap-4 p-4">
+    <div className="grid gap-4 p-4 md:p-6">
+      {/* Filter Bar for date, export etc */}
       <OrdersPageFilterBar />
 
+      {/* Order Status Filter Bar (All, Delivered, etc) */}
       <OrdersFilterBar
         activeStatus={activeStatus}
         setActiveStatus={setActiveStatus}
         orders={sampleOrders}
       />
 
-      <OrdersTable
-        orders={filteredOrders} 
-        onSelectOrder={setSelectedOrderId}
-        selectedOrderId={selectedOrderId}
-      />
+      {/* Orders Table */}
+      <div className="overflow-x-auto bg-white rounded-lg shadow-sm">
+        <OrdersTable
+          orders={filteredOrders}
+          onSelectOrder={setSelectedOrderId}
+          selectedOrderId={selectedOrderId}
+        />
+      </div>
 
+      {/* Order Details Panel (Shows on selection) */}
       {selectedOrderId && (
         <OrderDetailsPanel
           selectedOrderId={selectedOrderId}

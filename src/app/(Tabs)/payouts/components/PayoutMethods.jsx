@@ -15,16 +15,18 @@ export default function PayoutMethods({ methods }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-5 w-3/7">
-      <div className="flex justify-between items-center mb-4">
+    <div className="bg-white rounded-lg shadow p-5 w-full h-full">
+      <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
         <h2 className="text-sm font-semibold text-gray-700">Payout Methods</h2>
-        <button className="text-green-600 text-sm hover:underline">+ Add New</button>
+        <button className="text-[var(--color-theme)] text-sm hover:underline focus:outline-none">
+          + Add New
+        </button>
       </div>
 
       {payoutMethods.map((m, i) => (
         <div
           key={i}
-          className={`flex items-center justify-between p-4 rounded border mb-3 gap-2 
+          className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded border mb-3 gap-3 
             ${m.default ? 'bg-[var(--color-theme-light)] border-gray-300' : 'border-gray-300'}`}
         >
           <div className="flex items-center gap-3">
@@ -38,14 +40,15 @@ export default function PayoutMethods({ methods }) {
               <span className="text-sm text-gray-500">{m.label}</span>
             </div>
           </div>
+
           {m.default ? (
-            <span className={`${'bg-[var(--color-theme)]'} text-xs text-white px-2 py-0.5 rounded-xl cursor-pointer`}>
+            <span className="bg-[var(--color-theme)] text-xs text-white px-3 py-1 rounded-xl cursor-default">
               Default
             </span>
           ) : (
             <button
               onClick={() => handleMakeDefault(i)}
-              className="text-xs text-green-600 hover:underline cursor-pointer"
+              className="text-xs text-[var(--color-theme)] hover:underline focus:outline-none"
             >
               Make Default
             </button>
@@ -53,7 +56,7 @@ export default function PayoutMethods({ methods }) {
         </div>
       ))}
 
-      <p className="text-xs text-gray-500 mt-2">
+      <p className="text-xs text-gray-500 mt-4 leading-relaxed">
         Withdrawal minimum: $50.00
         <br />
         Processing time: 1–3 business days
