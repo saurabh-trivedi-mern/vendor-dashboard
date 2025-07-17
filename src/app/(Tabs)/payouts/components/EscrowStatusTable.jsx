@@ -11,8 +11,8 @@ export default function EscrowStatusTable({ orders }) {
         </div>
       </div>
 
-      {/* Responsive Table Wrapper */}
-      <div className="overflow-x-auto">
+      {/* Desktop Table */}
+      <div className="overflow-x-auto hidden md:block">
         <table className="min-w-[600px] w-full text-sm text-left">
           <thead className="text-xs text-gray-500 uppercase border-b border-[#E5E7EB]">
             <tr>
@@ -48,6 +48,36 @@ export default function EscrowStatusTable({ orders }) {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Cards */}
+      <div className="md:hidden space-y-4">
+        {orders.map((order) => (
+          <div key={order.id} className="border border-[#E5E7EB] rounded-lg p-4 shadow-sm bg-white">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-md font-semibold">#{order.id}</h3>
+              <span className={`text-xs px-2 py-1 rounded-full ${
+                order.status === 'Released'
+                  ? 'bg-green-100 text-green-700'
+                  : order.status.includes('Pending')
+                  ? 'bg-yellow-100 text-yellow-700'
+                  : 'bg-blue-100 text-blue-700'
+              }`}>
+                {order.status}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 mb-2">
+              <img src={order.avatar} alt="avatar" className="w-8 h-8 rounded-full object-cover" />
+              <div>
+                <p className="text-md font-medium">{order.customer}</p>
+                <p className="text-sm text-gray-700"><strong className="text-black">Amount:</strong> ${order.amount}</p>
+              </div>
+            </div>
+
+            <p className="text-sm text-gray-700">Release Date: {order.date}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export default function OrdersPage() {
         );
 
   return (
-    <div className="grid gap-4 p-4 md:p-6">
+    <div className="grid gap-4 p-4">
       {/* Filter Bar for date, export etc */}
       <OrdersPageFilterBar />
 
@@ -31,7 +31,7 @@ export default function OrdersPage() {
       />
 
       {/* Orders Table */}
-      <div className="overflow-x-auto bg-white rounded-lg shadow-sm">
+      <div className="overflow-x-auto md:bg-white md:rounded-lg md:shadow-sm">
         <OrdersTable
           orders={filteredOrders}
           onSelectOrder={setSelectedOrderId}

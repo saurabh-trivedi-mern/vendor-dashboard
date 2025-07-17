@@ -20,7 +20,7 @@ const items = [
   {
     title: 'Avg. Order Value',
     value: '$25',
-    icon: <FaTag size={14} color="brown" />,
+    icon: <FaTag size={16} color="brown" />,
     color: 'bg-yellow-200',
     percecent: '↑2%',
     label: 'Compared to last month'
@@ -35,14 +35,14 @@ export default function DashboardPageCards() {
           <div className="flex-1">
             <div className="flex items-center justify-between">
               <h3 className="text-sm md:text-lg font-semibold text-gray-500">{item.title}</h3>
-              <div className={`p-2 rounded-full ${item.color} text-white text-xl`}>
+              <div className={`p-2 rounded-full ${item.color} text-white`}>
                 {item.icon}
               </div>
             </div>
             <div className="mt-2 flex flex-col">
               <div className="flex items-center gap-2 mb-1">
                 <p className="text-lg md:text-xl font-bold">{item.value}</p>
-                <span className="text-sm text-green-600">{item.percecent}</span>
+                <span className="text-sm font-semibold text-green-600">{item.percecent}</span>
               </div>
               <p className="text-xs md:text-sm text-gray-500">{item.label}</p>
             </div>

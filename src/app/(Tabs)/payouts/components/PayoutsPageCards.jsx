@@ -64,7 +64,7 @@ export default function PayoutPageCards() {
           )}
 
           {card.extra && (
-            <div className="flex justify-between text-sm border-t pt-3 mt-3">
+            <div className="flex justify-between text-sm border-t-1 border-gray-300 pt-3 mt-3">
               <div>
                 <p className="text-gray-500">This Month</p>
                 <p className="font-semibold">{card.extra.thisMonth}</p>

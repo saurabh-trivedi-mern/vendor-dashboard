@@ -42,13 +42,13 @@ export default function PayoutMethods({ methods }) {
           </div>
 
           {m.default ? (
-            <span className="bg-[var(--color-theme)] text-xs text-white px-3 py-1 rounded-xl cursor-default">
+            <span className="bg-[var(--color-theme)] text-xs text-white px-3 py-1 rounded-xl cursor-pointer">
               Default
             </span>
           ) : (
             <button
               onClick={() => handleMakeDefault(i)}
-              className="text-xs text-[var(--color-theme)] hover:underline focus:outline-none"
+              className="text-xs text-[var(--color-theme)] hover:underline focus:outline-none cursor-pointer"
             >
               Make Default
             </button>
