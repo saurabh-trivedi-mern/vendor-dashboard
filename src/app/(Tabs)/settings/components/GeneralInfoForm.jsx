@@ -1,16 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import { FaImage } from "react-icons/fa";
 
 export default function GeneralInfo() {
   const [logo, setLogo] = useState(null)
   const [preview, setPreview] = useState(null)
 
   const [form, setForm] = useState({
-    storeName: 'TechGear Shop',
+    storeName: '',
     description: '',
     email: 'mike@techgearshop.com',
-    phone: '+1 (555) 123-4567',
+    phone: '',
     address: '',
   })
 
@@ -42,15 +43,15 @@ export default function GeneralInfo() {
                 {preview ? (
                   <img src={preview} alt="Logo" className="w-full h-full object-cover" />
                 ) : (
-                  <span className="text-gray-400 text-xl">🖼️</span>
+                  <span className="text-gray-400 text-xl"><FaImage /></span>
                 )}
               </div>
               <div>
-                <label className="inline-block text-white text-sm px-3 py-1.5 rounded cursor-pointer bg-[var(--color-theme)]">
+                <label className="inline-block text-white text-[12px] px-3 py-1.5 rounded cursor-pointer bg-[var(--color-theme)]">
                   Upload Logo
                   <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                 </label>
-                <p className="text-xs text-gray-500 mt-1">JPG, PNG up to 2MB</p>
+                <p className="text-[10px] text-gray-500 mt-1">JPG, PNG up to 2MB</p>
               </div>
             </div>
           </div>

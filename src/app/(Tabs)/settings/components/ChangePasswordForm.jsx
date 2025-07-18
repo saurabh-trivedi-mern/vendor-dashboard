@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import { FaEye, FaEyeSlash, FaKey, FaLock } from "react-icons/fa6"
+
 export default function ChangePasswordForm({ savedPassword, onPasswordChange }) {
   const [form, setForm] = useState({
     currentPassword: '',
@@ -53,7 +55,7 @@ export default function ChangePasswordForm({ savedPassword, onPasswordChange }) 
   return (
     <div>
       <div className="border-1 border-gray-300 bg-gray-100 rounded-lg p-6 shadow-sm">
-        <h3 className="font-semibold text-base mb-4">🔑 Change Password</h3>
+        <h3 className="flex items-center gap-2 font-semibold text-base mb-4"><FaKey className="text-[var(--color-theme)]" /> Change Password</h3>
         <div className="space-y-4">
 
           <div>
@@ -74,7 +76,7 @@ export default function ChangePasswordForm({ savedPassword, onPasswordChange }) 
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer"
                 onClick={() => toggleShow('current')}
               >
-                {show.current ? '🙈' : '👁️'}
+                {show.current ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
             <p className="text-xs text-gray-500 mt-1">
@@ -100,7 +102,7 @@ export default function ChangePasswordForm({ savedPassword, onPasswordChange }) 
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer"
                 onClick={() => toggleShow('new')}
               >
-                {show.new ? '🙈' : '👁️'}
+                {show.new ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
             <div className="text-xs mt-1 text-gray-500 flex flex-wrap gap-x-2">
@@ -134,7 +136,7 @@ export default function ChangePasswordForm({ savedPassword, onPasswordChange }) 
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer"
                 onClick={() => toggleShow('confirm')}
               >
-                {show.confirm ? '🙈' : '👁️'}
+                {show.confirm ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
             {!passwordsMatch && form.confirmPassword.length > 0 && (
@@ -148,14 +150,14 @@ export default function ChangePasswordForm({ savedPassword, onPasswordChange }) 
           <button
             onClick={handleSubmit}
             disabled={!isFormValid}
-            className={`mt-4 w-full text-white font-medium py-2 rounded transition-all duration-200 
+            className={`flex items-center gap-2 justify-center mt-4 w-full text-white font-medium py-2 rounded transition-all duration-200 
               ${
                 isFormValid
                   ? 'bg-[var(--color-theme)] hover:opacity-90 cursor-pointer'
                   : 'bg-gray-400 cursor-not-allowed'
               }`}
           >
-            🔒 Update Password
+            <FaLock/> Update Password
           </button>
         </div>
       </div>

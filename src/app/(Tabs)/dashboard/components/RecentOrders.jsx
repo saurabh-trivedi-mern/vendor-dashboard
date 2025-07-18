@@ -19,7 +19,7 @@ export default function RecentOrders() {
     <div className="bg-white p-4 rounded-xl shadow-sm">
       <div className="flex justify-between mb-6">
         <h2 className="font-semibold">Recent Orders</h2>
-        <a href="#" className="text-sm text-green-600 hover:underline">View All Orders</a>
+        <a href="#" className="text-sm text-[var(--color-theme)] hover:underline">View All Orders</a>
       </div>
       <div className="space-y-4">
         {orders.map((order, i) => (

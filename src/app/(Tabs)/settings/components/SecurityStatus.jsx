@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { FaCircleXmark } from "react-icons/fa6";
 
 export default function SecurityStatus({ password = '' }) {
   const [passwordScore, setPasswordScore] = useState(0)
@@ -58,14 +59,14 @@ export default function SecurityStatus({ password = '' }) {
 
       <div className="flex flex-col gap-1 mb-4">
         <p className="text-sm text-gray-500">Two-Factor Authentication</p>
-        <p className="text-yellow-600 font-semibold">⚠ Not Enabled</p>
+        <p className="flex items-center gap-2 text-yellow-600 font-semibold"><FaCircleXmark/> Not Enabled</p>
       </div>
 
       <div  className={`bg-white mt-2 p-4 rounded shadow text-sm border-1 border-[var(--color-theme)]`}>
         <p className="text-sm text-gray-500 font-medium">Security Score</p>
         <div className="flex justify-between">
             <h1 className={`font-bold text-3xl ${getColor().split(' ')[1]}`}>{passwordScore}/10</h1>
-            <a href="#" className="text-green-700 text-sm font-medium">Improve Score</a>
+            <a href="#" className="text-[var(--color-theme)] text-sm font-medium">Improve Score</a>
         </div>
       </div>
     </div>

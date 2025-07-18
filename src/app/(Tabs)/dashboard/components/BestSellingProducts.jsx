@@ -31,7 +31,7 @@ export default function BestSellingProducts() {
     <div className="bg-white p-4 rounded-xl shadow-sm">
       <div className="flex justify-between mb-4">
         <h2 className="font-semibold">Best Selling Products</h2>
-        <a href="#" className="text-sm text-green-600 hover:underline">View All Products</a>
+        <a href="#" className="text-sm text-[var(--color-theme)] hover:underline">View All Products</a>
       </div>
       <div className="space-y-8 p-4">
         {products.map((p, i) => (

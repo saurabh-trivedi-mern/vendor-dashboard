@@ -45,7 +45,7 @@ export default function Sidebar({ onClose, isOpen }) {
 
         {/* Desktop Header */}
         <div className="hidden lg:flex items-center gap-2 p-4 text-xl font-semibold border-b border-gray-200">
-          <span className="text-[var(--color-theme)] text-3xl"><CiShop /></span> <Link href="/"> Vendor Panel</Link>
+          <span className="text-[var(--color-theme)] text-[18px]"><CiShop size={30} /></span> <Link href="/"> Vendor Panel</Link>
         </div>
 
         {/* Menu */}
@@ -57,9 +57,9 @@ export default function Sidebar({ onClose, isOpen }) {
                 key={item.name}
                 href={item.href}
                 onClick={() => { if (onClose) onClose() }}
-                className={`flex items-center gap-3 py-4 px-6 text-xl transition-all duration-200 
-                  ${isActive ? 'bg-[var(--color-theme-light)] text-black border-l-[4px] border-[var(--color-theme)]' : 'text-gray-500'}
-                  hover:bg-[var(--color-theme-light)] hover:text-black hover:border-l-[4px] hover:border-[var(--color-theme)]`}
+                className={`flex items-center gap-3 py-3 px-6 text-[16px] transition-all duration-200 
+                  ${isActive ? 'bg-[var(--color-theme-light)] text-[var(--color-theme)] border-l-[4px] border-[var(--color-theme)]' : 'text-gray-500'}
+                  hover:bg-[var(--color-theme-light)] hover:text-[var(--color-theme)] hover:border-l-[4px] hover:border-[var(--color-theme)]`}
               >
                 <span className={`${isActive ? 'text-[var(--color-theme)]' : 'text-gray-500'}`}>{item.icon}</span>
                 {item.name}
@@ -69,7 +69,7 @@ export default function Sidebar({ onClose, isOpen }) {
         </nav>
       </div>
 
-      <div className="p-4 border-t border-gray-200 flex justify-between items-center">
+      <div className="p-4 border-t border-gray-200 flex justify-between items-center fixed bottom-0 w-full">
         <div className="flex gap-3 items-center">
           <Image src="/avatar.png" alt="avatar" className="rounded-full object-cover" width={24} height={24} />
           <div className="text-sm">

@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { FaUniversity, FaEye, FaEyeSlash } from "react-icons/fa";
+import { MdOutlinePhoneAndroid } from "react-icons/md";
 
 export default function BankAccountInformationSection(){
     const [form, setForm] = useState({
@@ -25,7 +27,7 @@ export default function BankAccountInformationSection(){
   return (
     <div>
         <div className="col-span-2 bg-white rounded-lg space-y-4">
-          <h3 className="text-base font-semibold mb-2">🏦 Bank Account Information</h3>
+          <h3 className="flex items-center gap-2 text-base font-semibold mb-2"><FaUniversity className="text-[var(--color-theme)]" /> Bank Account Information</h3>
 
           {/* Account Holder Name */}
           <div>
@@ -70,7 +72,7 @@ export default function BankAccountInformationSection(){
                 className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
                 onClick={() => setShowAccount(prev => !prev)}
               >
-                {showAccount ? '🙈' : '👁️'}
+                {showAccount ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
             <p className="text-xs text-gray-500 mt-1">Your account number will be securely encrypted</p>
@@ -122,7 +124,7 @@ export default function BankAccountInformationSection(){
 
           {/* UPI Details */}
           <div className="mt-6">
-            <h4 className="font-semibold text-sm mb-4">📱 UPI Details (Optional)</h4>
+            <h4 className="flex items-center gap-1 font-semibold text-sm mb-4"><MdOutlinePhoneAndroid className="text-[var(--color-theme)]" /> UPI Details (Optional)</h4>
             <label className="block text-sm font-medium">UPI ID</label>
             <input
               type="text"

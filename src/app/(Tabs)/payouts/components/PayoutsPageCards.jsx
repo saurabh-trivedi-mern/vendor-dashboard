@@ -40,14 +40,14 @@ export default function PayoutPageCards() {
       {cards.map((card, index) => (
         <div key={index} className="bg-white p-5 rounded-lg shadow-sm relative flex flex-col justify-between h-full">
 
-          <div className={`absolute top-4 right-4 p-2 rounded-full ${card.iconBg}`}>
+          <div className={`absolute top-4 right-4 p-3 rounded-full ${card.iconBg}`}>
             {card.icon}
           </div>
 
           <div className="mb-4">
             <h2 className="text-sm font-medium text-gray-500">{card.title}</h2>
             <p className="text-2xl font-bold text-gray-800 mt-3 mb-1">{card.amount}</p>
-            <p className="text-sm text-gray-500">{card.subtitle}</p>
+            <p className="text-sm text-gray-500 text-[12px]">{card.subtitle}</p>
           </div>
 
           {card.button && (
